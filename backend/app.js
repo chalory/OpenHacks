@@ -22,7 +22,7 @@ async function insertData(name, email) {
   }
 }
 
-insertData('John Doe', 'john.doe@example.com');
+// insertData('John Doe', 'john.doe@example.com');
 
 async function selectData() {
   try {
@@ -43,42 +43,49 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Your route handlers go here
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
   res.send('Hello World!')
 })
 
 app.get('/create-tables', async (req, res) => {
   try {
     await pool.query(`
-      CREATE TABLE IF NOT EXISTS user (
+      CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
         name VARCHAR(255),
         address VARCHAR(255),
-        password VARCHAR(255)
+        email VARCHAR(255) unique,
+        password VARCHAR(255),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
       )
     `)
     await pool.query(`
-      CREATE TABLE IF NOT EXISTS rating (
+      CREATE TABLE IF NOT EXISTS ratings (
         id SERIAL PRIMARY KEY,
         donor_id SERIAL,
         rate INT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         CONSTRAINT fk_user
           FOREIGN KEY(donor_id)
-            REFERENCES user(id)
+            REFERENCES users(id)
             ON DELETE CASCADE
       )
     `)
     await pool.query(`
-      CREATE TABLE IF NOT EXISTS post (
+      CREATE TABLE IF NOT EXISTS posts (
         id SERIAL PRIMARY KEY,
         author_id SERIAL,
         title VARCHAR(255),
         food VARCHAR(255),
         notes VARCHAR(255),
         type VARCHAR(255),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         CONSTRAINT fk_user
           FOREIGN KEY(author_id)
-            REFERENCES user(id)
+            REFERENCES users(id)
             ON DELETE CASCADE
       )
     `)
