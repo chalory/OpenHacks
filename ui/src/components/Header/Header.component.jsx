@@ -22,7 +22,7 @@ const Header = () => {
                                 Feed
                             </Link>
                             <Link
-                                to="Volunteer"
+                                to="volunteer"
                                 class="inline-block p-2 amber-700 hover:text-amber-700"
                             >
                                 Volunteer
