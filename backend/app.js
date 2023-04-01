@@ -180,6 +180,46 @@ app.get('/api/ratings', async (req, res) => {
   }
 })
 
+app.post('/api/posts', async (req, res) => {
+  const { author_id, title, food, notes, type } = req.body
+  try {
+    const query = {
+      text: 'INSERT INTO posts(author_id, title, food, notes, type) VALUES($1, $2, $3, $4, $5)',
+      values: [author_id, title, food, notes, type]
+    }
+    await pool.query(query)
+    res.status(200).json({ message: 'successfully added post' })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'something went wrong' })
+  }
+})
+
+app.get('/api/posts', async (req, res) => {
+  try {
+    const posts = await pool.query('SELECT * FROM posts')
+    res.status(200).json(posts.rows)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'something went wrong' })
+  }
+})
+
+app.get('/api/posts/:id', async (req, res) => {
+  const { id } = req.params
+  try {
+    const query = {
+      text: 'SELECT * FROM posts WHERE id=$1',
+      values: [id]
+    }
+    const user = await pool.query(query)
+    res.status(200).json(user.rows[0])
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'something went wrong' })
+  }
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
