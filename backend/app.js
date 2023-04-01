@@ -96,6 +96,55 @@ app.get('/create-tables', async (req, res) => {
   }
 })
 
+app.post('/api/users', async (req, res)  => {
+  const { name, address, email, password } = req.body
+  const userQuery = {
+    text: 'SELECT * FROM users WHERE email=$1',
+    values: [email]
+  }
+  const createUserQuery = {
+    text: 'INSERT INTO users(name, address, email, password) VALUES($1, $2, $3, $4)',
+    values: [name, address, email, password]
+  }
+  try {
+    const user = await pool.query(userQuery)
+    if (user.rows.length !== 0) {
+      res.status(400).json({ message: 'user already exists' })
+      return
+    }
+    await pool.query(createUserQuery)
+    res.status(200).json({ message: 'successfully created user' })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'something went wrong' })
+  }
+})
+
+app.get('/api/users', async (req, res) => {
+  try {
+    const users = await pool.query('SELECT * FROM users')
+    res.status(200).json(users.rows)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'something went wrong' })
+  }
+})
+
+app.get('/api/users/:id', async (req, res) => {
+  const { id } = req.params
+  try {
+    const query = {
+      text: 'SELECT * FROM users WHERE id=$1',
+      values: [id]
+    }
+    const user = await pool.query(query)
+    res.status(200).json(user.rows[0])
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'something went wrong' })
+  }
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
