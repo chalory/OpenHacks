@@ -1,28 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Landing from "./routes/Landing/landing.route";
-import Feed from "./routes/feed/feed.route";
-import Volunteer from "./routes/volunteer/volunteer.route";
-
-
+import { Outlet } from "react-router-dom";
+import Header from "./components/Header/Header.component";
 
 const App = () => {
-  return (
-    <div className="App">
-      <Router>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/feed" element={<Feed />} />
-          <Route path="/volunteer" element={< Volunteer/>} />
-
-
-
-          
-          
-        </Routes>
-      </Router>
-    </div>
-  );
+    return (
+        <>
+            <Header />
+            <main>
+                <Outlet />
+            </main>
+        </>
+    );
 };
 
 export default App;
