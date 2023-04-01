@@ -1,7 +1,7 @@
 import React from "react";
 
 const Verification = () => {
-    return <div>Verification</div>;
+    return <section>Verification</section>;
 };
 
 export default Verification;
