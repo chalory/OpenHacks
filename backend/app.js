@@ -47,6 +47,48 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+app.get('/create-tables', async (req, res) => {
+  try {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS user (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(255),
+        address VARCHAR(255),
+        password VARCHAR(255)
+      )
+    `)
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS rating (
+        id SERIAL PRIMARY KEY,
+        donor_id SERIAL,
+        rate INT,
+        CONSTRAINT fk_user
+          FOREIGN KEY(donor_id)
+            REFERENCES user(id)
+            ON DELETE CASCADE
+      )
+    `)
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS post (
+        id SERIAL PRIMARY KEY,
+        author_id SERIAL,
+        title VARCHAR(255),
+        food VARCHAR(255),
+        notes VARCHAR(255),
+        type VARCHAR(255),
+        CONSTRAINT fk_user
+          FOREIGN KEY(author_id)
+            REFERENCES user(id)
+            ON DELETE CASCADE
+      )
+    `)
+    res.status(200).json({ message: 'tables created successfully' })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'something went wrong' })
+  }
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
