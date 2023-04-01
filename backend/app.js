@@ -145,6 +145,41 @@ app.get('/api/users/:id', async (req, res) => {
   }
 })
 
+app.post('/api/ratings', async (req, res) => {
+  const { donor_id, rate } = req.body
+  try {
+    const query = {
+      text: 'INSERT INTO ratings(donor_id, rate) VALUES($1, $2)',
+      values: [donor_id, rate]
+    }
+    await pool.query(query)
+    res.status(200).json({ message: 'successfully added rating' })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'something went wrong' })
+  }
+})
+
+app.get('/api/ratings', async (req, res) => {
+  const { id } = req.query
+  try {
+    if (!id) {
+      const ratings = await pool.query('SELECT * FROM ratings')
+      res.status(200).json(ratings.rows)
+      return
+    }
+    const query = {
+      text: 'SELECT AVG(rate) AS avg FROM ratings WHERE donor_id=$1',
+      values: [id]
+    }
+    const result = await pool.query(query)
+    res.status(200).json(result.rows[0].avg)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'something went wrong' })
+  }
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
