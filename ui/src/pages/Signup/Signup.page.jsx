@@ -8,7 +8,7 @@ import { IoMdSchool } from "react-icons/io";
 const Signup = () => {
     return (
         <section>
-            <div className="bg-[#FBCC34] p-14 flex justify-center items-center">
+            <div className="py-20 px-14 flex justify-center items-center">
                 <img
                     src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
                     alt="Pizza"
