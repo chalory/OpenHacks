@@ -2,13 +2,26 @@ import React from "react";
 
 const Landing = () => {
     return (
-        <>
-            <div class="md:flex justify-between py-20 px-14 bg-amber-400 text-indigo-100">
+        <section>
+            <div
+                class="h-[100vh] overflow-hidden md:flex justify-between w-full 
+                bg-[url('./images/hero.jpg')]
+                bg-no-repeat
+                bg-bottom
+                bg-cover text-indigo-100 pt-40 px-14"
+            >
                 <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h2 class="text-2xl md:text-4xl lg:text-6xl text-white mb-6">
-                        Made by students, FOR students!
-                    </h2>
-                    <p class="mb-6 text-white">A world where students are never hungry!</p>
+                    <h1 class="font-satisfy text-2xl md:text-6xl lg:text-[5.25rem] text-white mb-6">
+                        <span>Made by, </span>
+                        <span>students</span>
+                        <br />
+                        <span>FOR students!</span>
+                    </h1>
+                    <p class="mb-10 text-white font-light max-w-[80%]">
+                        A world where students are never hungry! Lorem ipsum dolor sit amet
+                        consectetur adipisicing elit. Consequuntur ad nulla cum labore voluptatum!
+                        Quasi recusandae voluptas doloribus illo corrupti?
+                    </p>
                     <a
                         href="#"
                         class="inline-block rounded text-lg bg-orange-400 amber-700 hover:bg-gray-300 mr-2 py-3 px-6 "
@@ -26,13 +39,17 @@ const Landing = () => {
                     <img
                         src="https://2012.ateneo.edu/sites/default/files/gallery-image/_MG_0207.JPG"
                         alt="Happy Doggo"
+                        style={{
+                            boxShadow:
+                                " rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+                        }}
                         class="w-full rounded shadow-2xl"
                     />
                 </div>
             </div>
-            <div class="md:flex py-16 px-10 bg-amber-300 text-amber-700 text-center"></div>
+            {/* <div class="md:flex py-16 px-10 bg-amber-300 text-amber-700 text-center"></div> */}
 
-            <div class=" p-10 bg-amber-400 text-indigo-300 flex justify-between">
+            {/* <div class=" p-10 bg-amber-400 text-indigo-300 flex justify-between">
                 <div class="md:w-1/2">
                     <h3 class="text-lg mb-2">Join the Newsletter</h3>
                     <form class="flex">
@@ -46,8 +63,8 @@ const Landing = () => {
                     </form>
                 </div>
                 <div class="flex items-center">Ateneo De Davao University</div>
-            </div>
-        </>
+            </div> */}
+        </section>
     );
 };
 
