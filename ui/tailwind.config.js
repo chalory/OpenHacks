@@ -10,7 +10,6 @@ module.exports = {
         },
         extend: {
             fontFamily: {
-                sans: ["Bai Jamjuree", "sans-serif"],
                 satisfy: ["Bangers", "cursive"],
             },
         },
