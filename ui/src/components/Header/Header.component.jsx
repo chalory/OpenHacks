@@ -50,7 +50,7 @@ const Header = () => {
                     </Link>
                     <Link
                         to="signup"
-                        className="bg-white rounded-full py-3 px-5 hover:bg-opacity-90  hover:shadow-lg border transition hover:-translate-y-0.5 duration-150"
+                        className="bg-white rounded-full py-3 px-5  hover:shadow-lg border transition hover:-translate-y-0.5 duration-150"
                     >
                         Sign Up
                     </Link>
