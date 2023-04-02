@@ -32,49 +32,18 @@ const Signup = () => {
                             <p className="mt-2 font-light">Enter your information to register.</p>
                         </div>
                         <div>
-                            {/* <div class="flex -mx-3">
-                                <div class="w-1/2 px-3 mb-5">
-                                    <label for="" class="text-xs font-semibold px-1">
-                                        First name
-                                    </label>
-                                    <div class="flex">
-                                        <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                                            <AiOutlineUser className="text-gray-500" />
-                                        </div>
-                                        <input
-                                            type="text"
-                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-black"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="w-1/2 px-3 mb-5">
-                                    <label for="" class="text-xs font-semibold px-1">
-                                        Last name
-                                    </label>
-                                    <div class="flex">
-                                        <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                                            <AiOutlineUser className="text-gray-500" />
-                                        </div>
-                                        <input
-                                            type="text"
-                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-black"
-                                        />
-                                    </div>
-                                </div> 
-                            </div>*/}
-
                             <div class="flex -mx-3">
                                 <div class="w-1/2 px-3 mb-5">
                                     <label for="" class="text-xs font-semibold px-1">
                                         Email
                                     </label>
-                                    <div class="flex">
+                                    <div class="flex mt-1">
                                         <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                                             <MdAlternateEmail className="text-gray-500" />
                                         </div>
                                         <input
                                             type="email"
-                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-black"
+                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg ring-2 ring-gray-300 outline-none focus:ring-2 focus:ring-green-300"
                                         />
                                     </div>
                                 </div>
@@ -82,13 +51,13 @@ const Signup = () => {
                                     <label for="" class="text-xs font-semibold px-1">
                                         University
                                     </label>
-                                    <div class="flex">
+                                    <div class="flex mt-1">
                                         <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                                             <IoMdSchool className="text-gray-500" />
                                         </div>
                                         <input
-                                            type="email"
-                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-black"
+                                            type="text"
+                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg ring-2 ring-gray-300 outline-none focus:ring-2 focus:ring-green-300"
                                         />
                                     </div>
                                 </div>
@@ -99,13 +68,13 @@ const Signup = () => {
                                     <label for="" class="text-xs font-semibold px-1">
                                         Password
                                     </label>
-                                    <div class="flex">
+                                    <div class="flex mt-1">
                                         <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                                             <AiTwotoneLock className="text-gray-500" />
                                         </div>
                                         <input
                                             type="password"
-                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-black"
+                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg ring-2 ring-gray-300 outline-none focus:ring-2 focus:ring-green-300"
                                         />
                                     </div>
                                 </div>
@@ -115,13 +84,13 @@ const Signup = () => {
                                     <label for="" class="text-xs font-semibold px-1">
                                         Confirm Password
                                     </label>
-                                    <div class="flex">
+                                    <div class="flex mt-1">
                                         <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                                             <AiTwotoneLock className="text-gray-500" />
                                         </div>
                                         <input
                                             type="password"
-                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-black"
+                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg ring-2 ring-gray-300 outline-none focus:ring-2 focus:ring-green-300"
                                         />
                                     </div>
                                 </div>
