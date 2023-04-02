@@ -1,6 +1,7 @@
 const express = require('express')
 const port = 3000
 const bodyParser = require('body-parser');
+const cors = require('cors')
 const { Pool } = require("pg");
 const connectionString = 'postgresql://chalory:openhacks2023@openhacks2-4434.8nk.cockroachlabs.cloud:26257/defaultdb?application_name=ccloud&sslmode=verify-full'
 const app = express();
@@ -37,6 +38,7 @@ async function selectData() {
 
 
 // Add middleware to parse JSON and URL-encoded request bodies
+app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -196,9 +198,22 @@ app.post('/api/posts', async (req, res) => {
 })
 
 app.get('/api/posts', async (req, res) => {
+  const { page = 0, limit = 10 } = req.query
+  const offset = page * limit
   try {
-    const posts = await pool.query('SELECT * FROM posts')
-    res.status(200).json(posts.rows)
+    const query = {
+      text: 'SELECT posts.*, users.name FROM posts JOIN users ON posts.author_id = users.id LIMIT $1 OFFSET $2',
+      values: [limit, offset]
+    }
+    // const posts = await pool.query('SELECT posts.*, users.name FROM posts JOIN users ON posts.author_id = users.id')
+    const posts = await pool.query(query)
+    const count = await pool.query('SELECT COUNT(*) FROM posts')
+    res.status(200).json({
+      data: posts.rows,
+      page,
+      limit,
+      total: Number(count.rows[0].count)
+    })
   } catch (err) {
     console.error(err)
     res.status(500).json({ error: 'something went wrong' })
