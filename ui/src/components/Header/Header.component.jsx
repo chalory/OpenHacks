@@ -9,9 +9,9 @@ const Header = () => {
                     <div class="flex items-center justify-center gap-6">
                         <Link to="/">
                             <img
-                                src="https://ateressi.sirv.com/Untitled%20design.png"
-                                height="100"
-                                width="80"
+                                src="https://ateressi.sirv.com/openhacks.png"
+                                height="200"
+                                width="100"
                                 alt="Logo"
                                 class="mr-2"
                             />
