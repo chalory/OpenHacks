@@ -19,7 +19,7 @@ const Header = () => {
                         />
                     </Link>
 
-                    <nav className="flex gap-4">
+                    {/* <nav className="flex gap-4">
                         <Link
                             to="volunteer"
                             className="inline-block p-2 amber-700 text-black border-none transition hover:-translate-y-0.5 duration-150"
@@ -38,7 +38,7 @@ const Header = () => {
                         >
                             Contact
                         </Link>
-                    </nav>
+                    </nav> */}
                 </div>
 
                 <div className="flex items-center justify-center gap-6">
