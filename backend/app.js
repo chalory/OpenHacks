@@ -39,8 +39,7 @@ async function selectData() {
 
 // Add middleware to parse JSON and URL-encoded request bodies
 app.use(cors())
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json())
 
 
 // Your route handlers go here
@@ -83,6 +82,8 @@ app.get('/create-tables', async (req, res) => {
         food VARCHAR(255),
         notes VARCHAR(255),
         type VARCHAR(255),
+        address VARCHAR(255),
+        name VARCHAR(255),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         CONSTRAINT fk_user
@@ -111,6 +112,34 @@ app.get('/add-address', async (req, res) => {
 app.get('/add-name', async (req, res) => {
   try {
     await pool.query('ALTER TABLE posts ADD name VARCHAR(255)')
+    res.status(200).json({ message: 'table altered successfully' })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'something went wrong' })
+  }
+})
+
+app.get('/reset-posts', async (req, res) => {
+  try {
+    await pool.query('DROP TABLE posts')
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS posts (
+        id SERIAL PRIMARY KEY,
+        author_id SERIAL,
+        title VARCHAR(255),
+        food VARCHAR(255),
+        notes VARCHAR(255),
+        type VARCHAR(255),
+        address VARCHAR(255),
+        name VARCHAR(255),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        CONSTRAINT fk_user
+          FOREIGN KEY(author_id)
+            REFERENCES users(id)
+            ON DELETE CASCADE
+      )
+    `)
     res.status(200).json({ message: 'table altered successfully' })
   } catch (err) {
     console.error(err)
@@ -249,6 +278,22 @@ app.get('/api/posts/:id', async (req, res) => {
     }
     const user = await pool.query(query)
     res.status(200).json(user.rows[0])
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'something went wrong' })
+  }
+})
+
+app.delete('/api/posts', async (req, res) => {
+  const { id } = req.query
+  console.log('id', id)
+  try {
+    const query = {
+      text: 'DELETE FROM posts WHERE id=$1',
+      values: [id]
+    }
+    await pool.query(query)
+    res.status(204).end()
   } catch (err) {
     console.error(err)
     res.status(500).json({ error: 'something went wrong' })
