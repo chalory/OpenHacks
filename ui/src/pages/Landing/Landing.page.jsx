@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
     return (
@@ -12,8 +13,8 @@ const Landing = () => {
             >
                 <div class="md:w-1/2 mb-10 md:mb-0">
                     <h1 class="font-satisfy text-2xl md:text-6xl lg:text-[5.25rem] text-white mb-6">
-                        <span>Made by, </span>
-                        <span>students</span>
+                        <span>Made by </span>
+                        <span>students, </span>
                         <br />
                         <span>FOR students!</span>
                     </h1>
@@ -22,18 +23,18 @@ const Landing = () => {
                         consectetur adipisicing elit. Consequuntur ad nulla cum labore voluptatum!
                         Quasi recusandae voluptas doloribus illo corrupti?
                     </p>
-                    <a
-                        href="#"
-                        class="inline-block rounded text-lg bg-orange-400 amber-700 hover:bg-gray-300 mr-2 py-3 px-6 "
+                    <Link
+                        to="volunteer"
+                        class="inline-block rounded text-lg bg-orange-400 amber-700  mr-2 py-3 px-6 border-none   hover:shadow-lg border transition hover:-translate-y-0.5 duration-150"
                     >
-                        Learn More
-                    </a>
-                    <a
+                        Volunteer with Us
+                    </Link>
+                    {/* <a
                         href="#"
                         class="inline-block rounded text-lg bg-orange-400 hover:bg-orange-300 py-3 px-6"
                     >
                         Get Started
-                    </a>
+                    </a> */}
                 </div>
                 <div class="md:w-1/2">
                     <img
