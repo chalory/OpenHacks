@@ -1,43 +1,59 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
+    const { pathname } = useLocation();
     return (
-        <header>
-            <div>
-                <div class="bg-amber-400 py-4 px-14 flex justify-between items-center">
-                    <div class="flex items-center justify-center gap-6">
-                        <Link to="/">
-                            <img
-                                src="https://ateressi.sirv.com/openhacks.png"
-                                height="200"
-                                width="100"
-                                alt="Logo"
-                                class="mr-2"
-                            />
-                        </Link>
+        <header
+            className={`${pathname === "/" ? "absolute bg-transparent" : ""} w-full bg-amber-400`}
+        >
+            <div className="py-12 px-14 flex justify-between items-center">
+                <div className="flex items-center justify-center gap-24">
+                    <Link to="/">
+                        <img
+                            src="./images/logo.png"
+                            height="100"
+                            width="55"
+                            alt="Logo"
+                            className="mr-2 -mt-5 border-none transition hover:-translate-y-0.5 duration-150"
+                        />
+                    </Link>
 
-                        <nav>
-                            <Link to="feed" class="inline-block p-2 amber-700 hover:text-amber-700">
-                                Feed
-                            </Link>
-                            <Link
-                                to="volunteer"
-                                class="inline-block p-2 amber-700 hover:text-amber-700"
-                            >
-                                Volunteer
-                            </Link>
-                        </nav>
-                    </div>
+                    <nav className="flex gap-4">
+                        <Link
+                            to="volunteer"
+                            className="inline-block p-2 amber-700 text-black border-none transition hover:-translate-y-0.5 duration-150"
+                        >
+                            Volunteer
+                        </Link>
+                        <Link
+                            to="volunteer"
+                            className="inline-block p-2 amber-700 text-black border-none transition hover:-translate-y-0.5 duration-150"
+                        >
+                            About
+                        </Link>
+                        <Link
+                            to="volunteer"
+                            className="inline-block p-2 amber-700 text-black border-none transition hover:-translate-y-0.5 duration-150"
+                        >
+                            Contact
+                        </Link>
+                    </nav>
+                </div>
 
-                    <div class="flex items-center justify-center gap-4">
-                        <Link to="login" class="inline-block p-2  hover:text-indigo-100 mr-2">
-                            Log In
-                        </Link>
-                        <Link to="signup" class="bg-white rounded-full py-3 px-5 ">
-                            Sign Up
-                        </Link>
-                    </div>
+                <div className="flex items-center justify-center gap-6">
+                    <Link
+                        to="login"
+                        className="inline-block p-2 border-none transition hover:-translate-y-0.5 duration-150"
+                    >
+                        Log In
+                    </Link>
+                    <Link
+                        to="signup"
+                        className="bg-white rounded-full py-3 px-5 hover:bg-opacity-90  hover:shadow-lg border transition hover:-translate-y-0.5 duration-150"
+                    >
+                        Sign Up
+                    </Link>
                 </div>
             </div>
         </header>
