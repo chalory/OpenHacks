@@ -27,9 +27,9 @@ const Signup = () => {
                     }}
                 >
                     <div class="w-full py-10 px-5 md:px-10">
-                        <div class="text-center mb-10">
+                        <div class="mb-10">
                             <h1 class="font-bold text-3xl text-gray-900">Sign Up</h1>
-                            <p>Enter your information to register.</p>
+                            <p className="mt-2 font-light">Enter your information to register.</p>
                         </div>
                         <div>
                             {/* <div class="flex -mx-3">
@@ -43,7 +43,7 @@ const Signup = () => {
                                         </div>
                                         <input
                                             type="text"
-                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-black"
                                         />
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@ const Signup = () => {
                                         </div>
                                         <input
                                             type="text"
-                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-black"
                                         />
                                     </div>
                                 </div> 
@@ -74,13 +74,13 @@ const Signup = () => {
                                         </div>
                                         <input
                                             type="email"
-                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-black"
                                         />
                                     </div>
                                 </div>
                                 <div class="w-1/2  px-3 mb-5">
                                     <label for="" class="text-xs font-semibold px-1">
-                                        School
+                                        University
                                     </label>
                                     <div class="flex">
                                         <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
@@ -88,7 +88,7 @@ const Signup = () => {
                                         </div>
                                         <input
                                             type="email"
-                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-black"
                                         />
                                     </div>
                                 </div>
@@ -105,7 +105,7 @@ const Signup = () => {
                                         </div>
                                         <input
                                             type="password"
-                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-black"
                                         />
                                     </div>
                                 </div>
@@ -121,7 +121,7 @@ const Signup = () => {
                                         </div>
                                         <input
                                             type="password"
-                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                            class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-black"
                                         />
                                     </div>
                                 </div>
@@ -129,7 +129,26 @@ const Signup = () => {
                             <div class="flex -mx-3">
                                 <div class="w-full px-3 mb-5">
                                     <button class="w-full md:w-auto flex justify-center items-center p-3 space-x-4 font-sans font-bold text-white rounded-md shadow-lg px-9 bg-[#15803D] shadow-cyan-100 hover:bg-opacity-90  hover:shadow-lg border transition hover:-translate-y-0.5 duration-150">
-                                        Sign Up
+                                        <span>Sign Up</span>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="w-7"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="#ffffff"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            ></path>
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <line x1="13" y1="18" x2="19" y2="12"></line>
+                                            <line x1="13" y1="6" x2="19" y2="12"></line>
+                                        </svg>
                                     </button>
                                 </div>
                             </div>
