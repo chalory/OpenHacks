@@ -1,10 +1,14 @@
-import axios from 'axios'
-const baseUrl = 'http://localhost:3000/api'
+import axios from "axios";
+const baseUrl = "http://localhost:3000/api";
 
 const getAll = async (page, limit) => {
-    const url = `${baseUrl}/posts?page=${page}&limit=${limit}`
-    const req = await axios.get(url)
-    return req.data
-}
+    try {
+        const url = `${baseUrl}/posts`;
+        const req = await axios.get(url);
+        return req.data;
+    } catch (err) {
+        throw new Error(err);
+    }
+};
 
-export default { getAll }
+export default { getAll };
