@@ -2,22 +2,27 @@ import React from "react";
 
 const Login = () => {
     return (
-        <section class=" flex items-center justify-center min-h-screen bg-rose-50">
-            <div class="relative flex flex-col my-12 space-y-10 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 ">
+        <section class="flex items-center justify-center min-h-screen ">
+            <div
+                class="relative flex flex-col my-12 space-y-10 bg-white rounded-2xl md:flex-row md:space-y-0 "
+                style={{
+                    boxShadow:
+                        "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+                }}
+            >
                 <div class="p-6 md:p-20">
-                    <h1 class="font-mono mb-5 text-4xl font-bold">Log In</h1>
-                    <p class="max-w-sm mb-12 font-sans font-light text-gray-600">
-                        Log in to your account to ipsum dolor sit amet consectetur, adipisicing
-                        elit. Repellendus, enim.
+                    <h1 class="mb-5 text-4xl font-bold">Log In</h1>
+                    <p class="max-w-sm mb-12 font-light text-gray-600">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus, enim.
                     </p>
                     <input
                         type="text"
-                        class="w-full p-6 border border-gray-300 rounded-md placeholder:font-sans placeholder:font-light"
+                        class="w-full p-6 border border-gray-500 rounded-md placeholder:font-sans placeholder:font-normal"
                         placeholder="Enter your email address"
                     />
 
                     <div class="flex flex-col items-center justify-between mt-6 space-y-6 md:flex-row md:space-y-0">
-                        <a href="#" class="font-thin ">
+                        <a href="#" class="font-light">
                             Forgot password?
                         </a>
 
@@ -43,7 +48,7 @@ const Login = () => {
 
                     <div class="mt-12 border-b border-b-gray-300"></div>
 
-                    <p class="py-6 text-sm font-thin text-center text-gray-400">or log in with</p>
+                    <p class="py-6 text-sm  text-center text-gray-500">or log in with</p>
 
                     <div class="flex flex-col space-x-0 space-y-6 md:flex-row md:space-x-4 md:space-y-0">
                         <button class="flex items-center justify-center py-2 space-x-3 border border-gray-300 rounded shadow-sm hover:bg-opacity-30 hover:shadow-lg hover:-translate-y-0.5 transition duration-150 md:w-1/2">
@@ -52,7 +57,7 @@ const Login = () => {
                                 alt=""
                                 class="w-9"
                             />
-                            <span class="font-thin">Facebook</span>
+                            <span class="font-light">Facebook</span>
                         </button>
                         <button class="flex items-center justify-center py-2 space-x-3 border border-gray-300 rounded shadow-sm hover:bg-opacity-30 hover:shadow-lg hover:-translate-y-0.5 transition duration-150 md:w-1/2">
                             <img
@@ -60,7 +65,7 @@ const Login = () => {
                                 alt=""
                                 class="w-9"
                             />
-                            <span class="font-thin">Google</span>
+                            <span class="font-light">Google</span>
                         </button>
                     </div>
                 </div>
@@ -69,7 +74,7 @@ const Login = () => {
                     alt=""
                     class="w-[430px] hidden md:block"
                 />
-                <div class="group absolute -top-5 right-4 flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full md:bg-white md:top-4 hover:cursor-pointer hover:-translate-y-0.5 transition duration-150">
+                {/* <div class="group absolute -top-5 right-4 flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full md:bg-white md:top-4 hover:cursor-pointer hover:-translate-y-0.5 transition duration-150">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="w-6 h-6 text-black group-hover:text-gray-600"
@@ -84,7 +89,7 @@ const Login = () => {
                         <line x1="18" y1="6" x2="6" y2="18" />
                         <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
-                </div>{" "}
+                </div>{" "} */}
             </div>
         </section>
     );
