@@ -98,6 +98,16 @@ app.get('/create-tables', async (req, res) => {
   }
 })
 
+app.get('/add-address', async (req, res) => {
+  try {
+    await pool.query('ALTER TABLE posts ADD address VARCHAR(255)')
+    res.status(200).json({ message: 'table altered successfully' })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'something went wrong' })
+  }
+})
+
 app.post('/api/users', async (req, res)  => {
   const { name, address, email, password } = req.body
   const userQuery = {
@@ -183,11 +193,11 @@ app.get('/api/ratings', async (req, res) => {
 })
 
 app.post('/api/posts', async (req, res) => {
-  const { author_id, title, food, notes, type } = req.body
+  const { author_id, title, food, notes, type, address } = req.body
   try {
     const query = {
-      text: 'INSERT INTO posts(author_id, title, food, notes, type) VALUES($1, $2, $3, $4, $5)',
-      values: [author_id, title, food, notes, type]
+      text: 'INSERT INTO posts(author_id, title, food, notes, type) VALUES($1, $2, $3, $4, $5, $6)',
+      values: [author_id, title, food, notes, type, address]
     }
     await pool.query(query)
     res.status(200).json({ message: 'successfully added post' })
