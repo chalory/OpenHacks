@@ -1,8 +1,18 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthContext";
 
 const Header = () => {
+    const { currentUser, logout } = useAuthContext();
     const { pathname } = useLocation();
+
+    const navigate = useNavigate();
+
+    const logoutHandler = () => {
+        navigate("/");
+        logout();
+    };
+
     return (
         <header
             className={`${pathname === "/" ? "absolute bg-transparent" : ""} w-full bg-amber-400`}
@@ -42,18 +52,29 @@ const Header = () => {
                 </div>
 
                 <div className="flex items-center justify-center gap-6">
-                    <Link
-                        to="login"
-                        className="inline-block p-2 border-none transition hover:-translate-y-0.5 duration-150"
-                    >
-                        Log In
-                    </Link>
-                    <Link
-                        to="signup"
-                        className="bg-white rounded-full py-3 px-5  hover:shadow-lg border transition hover:-translate-y-0.5 duration-150"
-                    >
-                        Sign Up
-                    </Link>
+                    {Object.keys(currentUser).length === 0 ? (
+                        <>
+                            <Link
+                                to="login"
+                                className="inline-block p-2 border-none transition hover:-translate-y-0.5 duration-150"
+                            >
+                                Log In
+                            </Link>
+                            <Link
+                                to="signup"
+                                className="bg-white rounded-full py-3 px-5  hover:shadow-lg border transition hover:-translate-y-0.5 duration-150"
+                            >
+                                Sign Up
+                            </Link>
+                        </>
+                    ) : (
+                        <button
+                            onClick={logoutHandler}
+                            className="bg-white rounded-full py-3 px-5  hover:shadow-lg border transition hover:-translate-y-0.5 duration-150"
+                        >
+                            Log Out
+                        </button>
+                    )}
                 </div>
             </div>
         </header>
